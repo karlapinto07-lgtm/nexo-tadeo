@@ -1,0 +1,8 @@
+LOGOS
+Guarda aquí los logos con estos nombres exactos y aparecerán solos en la barra superior:
+
+    logo-utadeo.png      → logo oficial de la Universidad Jorge Tadeo Lozano (esquina superior izquierda)
+    logo-nexotadeo.png   → logo de la plataforma (opcional; si no existe se usa el hexágono azul + "NexoTadeo")
+
+Se muestran a 44 px de alto (34 px en celular). Usa versiones horizontales sobre fondo transparente o blanco.
+Al hacer clic en el logo de NexoTadeo se abre la ventana que explica el propósito de la plataforma.

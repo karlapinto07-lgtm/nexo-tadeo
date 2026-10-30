@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NexoTadeo · La red para conectar</title>
+  <meta name="description" content="NexoTadeo: red interactiva en forma de panal que conecta a estudiantes y egresados de Diseño Industrial de la Universidad Jorge Tadeo Lozano." />
+  <meta name="theme-color" content="#F8F9FD" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2l12 7v14l-12 7-12-7V9z' fill='%235A81FA'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============ 1 · INTRODUCCIÓN (alusión al panal) ============ -->
+  <section id="intro" class="intro" aria-label="Bienvenida">
+    <div class="intro__panel">
+      <div class="intro__copy">
+        <p class="intro__small">Universidad Jorge Tadeo Lozano · Diseño Industrial</p>
+        <h1 class="intro__title">Bienvenido a NexoTadeo:<br><span>La red para conectar</span></h1>
+        <p class="intro__sub">Explora el ecosistema de Diseño Industrial.</p>
+        <button class="btn btn--light" id="introEnter" type="button">Entrar al panal</button>
+        <div class="intro__bar" aria-hidden="true"><i></i></div>
+      </div>
+    </div>
+    <div class="intro__hive" id="introHive" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ BARRA SUPERIOR ============ -->
+  <header class="topbar">
+    <div class="brand-group">
+      <a class="logo-slot uni-logo" href="https://www.utadeo.edu.co" target="_blank" rel="noopener noreferrer" aria-label="Universidad Jorge Tadeo Lozano">
+        <!-- Logo oficial: assets/logo-utadeo.png -->
+        <img src="assets/logo-utadeo.png" alt="Universidad Jorge Tadeo Lozano" onload="this.parentNode.classList.add('has-img')" />
+        <span class="logo-slot__text">Universidad<br>Jorge Tadeo Lozano</span>
+      </a>
+      <span class="vr" aria-hidden="true"></span>
+      <button class="logo-slot brand" id="brandBtn" type="button" aria-label="¿Qué es NexoTadeo?" title="¿Qué es NexoTadeo?">
+        <!-- Logo de la plataforma (opcional): assets/logo-nexotadeo.png -->
+        <img src="assets/logo-nexotadeo.png" alt="NexoTadeo" onload="this.parentNode.classList.add('has-img')" />
+        <span class="logo-slot__text brand__default">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l12 7v14l-12 7-12-7V9z"/></svg>
+          <span class="brand__name">NexoTadeo</span>
+        </span>
+      </button>
+    </div>
+
+    <nav class="tabs" role="tablist" aria-label="Secciones">
+      <button class="tabs__btn is-active" role="tab" aria-selected="true" data-view="panal" type="button">Panal</button>
+      <button class="tabs__btn" role="tab" aria-selected="false" data-view="proyectos" type="button">Proyectos</button>
+    </nav>
+
+    <div class="topbar__actions">
+      <button class="btn btn--outline" id="loginBtn" type="button">Iniciar sesión</button>
+      <button class="btn btn--primary" id="joinBtn" type="button">Unirme a la red</button>
+      <button class="btn btn--outline me-btn" id="meBtn" type="button" hidden></button>
+    </div>
+  </header>
+
+  <!-- ============ 2 · VISTA PANAL ============ -->
+  <section class="view view--panal" id="viewPanal" aria-label="Panal">
+    <div class="panal-head">
+      <h2 class="greeting" id="greetingHi">¡Hola!</h2>
+      <p class="greeting__sub">Explora el ecosistema de Diseño Industrial.</p>
+      <div class="panal-meta">
+        <span class="stat-pill" id="statPill" tabindex="0">—</span>
+        <nav class="legend" id="legend" aria-label="Campos de diseño"></nav>
+      </div>
+    </div>
+
+    <main class="viewport" id="viewport" aria-label="Mapa interactivo del panal. Arrastra para moverte y usa la rueda para acercar o alejar.">
+      <div class="world intro-anim" id="world">
+        <svg class="links" id="links" aria-hidden="true"></svg>
+        <div class="cells" id="cells"></div>
+      </div>
+      <div class="loader" id="loader">Cargando el panal…</div>
+    </main>
+
+    <aside class="niche-card card" id="nicheCard" aria-hidden="true" aria-labelledby="nicheTitle"></aside>
+
+    <div class="toolbar card" role="toolbar" aria-label="Herramientas del mapa">
+      <button class="tool" id="zoomOut" type="button" aria-label="Alejar" title="Alejar (−)"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button>
+      <span class="zoom-level" id="zoomLevel">100%</span>
+      <button class="tool" id="zoomIn" type="button" aria-label="Acercar" title="Acercar (+)"><svg viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></svg></button>
+      <button class="tool" id="zoomFit" type="button" aria-label="Ver todo el panal" title="Ver todo (0)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      <span class="toolbar__sep"></span>
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="searchInput" type="search" placeholder="Buscar persona, área o habilidad" aria-label="Buscar en el panal" autocomplete="off" />
+      </label>
+      <button class="btn btn--primary btn--sm" id="teamBtn" type="button">Crear un equipo</button>
+    </div>
+  </section>
+
+  <!-- ============ 7 · VISTA PROYECTOS ============ -->
+  <section class="view view--proyectos" id="viewProyectos" aria-label="Proyectos" hidden>
+    <div class="pj-wrap">
+      <header class="pj-head">
+        <div>
+          <h2 class="pj-title">Proyectos</h2>
+          <p class="pj-sub">Lo que la red está creando y lo que ya hizo realidad.</p>
+        </div>
+        <button class="btn btn--primary" id="newProjectBtn" type="button">Publicar proyecto</button>
+      </header>
+      <div class="pj-filters">
+        <div class="seg" id="statusFilter" role="tablist" aria-label="Estado">
+          <button class="is-active" data-estado="" type="button">Todos</button>
+          <button data-estado="ejecucion" type="button">En ejecución</button>
+          <button data-estado="finalizado" type="button">Finalizados</button>
+        </div>
+        <div class="sector-chips" id="sectorFilter" aria-label="Sectores de desempeño"></div>
+      </div>
+      <div class="stack" id="projectStack"></div>
+    </div>
+  </section>
+
+  <!-- ============ PERFIL (drawer) ============ -->
+  <div class="scrim" id="drawerScrim"></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Perfil detallado">
+    <button class="btn btn--icon btn--light drawer__close" id="drawerClose" type="button" aria-label="Cerrar perfil">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="drawer__body" id="drawerBody"></div>
+    <input type="file" id="avatarFile" accept="image/*" hidden />
+    <input type="file" id="bannerFile" accept="image/*" hidden />
+  </aside>
+
+  <!-- ============ VENTANA: ¿QUÉ ES NEXOTADEO? ============ -->
+  <div class="modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" aria-hidden="true">
+    <div class="modal__backdrop modal__backdrop--strong" data-close></div>
+    <div class="modal__panel modal__panel--about">
+      <button class="btn btn--icon btn--ghost modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="about" id="aboutBody"></div>
+    </div>
+  </div>
+
+  <!-- ============ INICIAR SESIÓN ============ -->
+  <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <form class="modal__panel modal__panel--sm" id="loginForm" novalidate>
+      <button class="btn btn--icon btn--ghost modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="modal__head">
+        <h2 id="loginTitle">Iniciar sesión</h2>
+        <p class="muted">Ingresa con tu nombre completo y tu contraseña.</p>
+      </div>
+      <div class="modal__body">
+        <div class="field">
+          <label for="loginName">Nombre completo</label>
+          <input id="loginName" type="text" autocomplete="username" placeholder="Ej: Luisa Hernández" required />
+        </div>
+        <div class="field">
+          <label for="loginPass">Contraseña</label>
+          <div class="pass">
+            <input id="loginPass" type="password" autocomplete="current-password" placeholder="Tu contraseña" required />
+            <button class="pass__toggle" type="button" data-toggle-pass="loginPass">Mostrar</button>
+          </div>
+        </div>
+        <p class="form-error" id="loginErr" role="alert"></p>
+      </div>
+      <div class="modal__foot modal__foot--stack">
+        <button class="btn btn--primary btn--block" type="submit">Iniciar sesión</button>
+        <button class="btn btn--ghost btn--block" type="button" id="toJoin">¿Aún no tienes cuenta? Únete a la red</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ============ CONFIRMACIÓN GENÉRICA ============ -->
+  <div class="modal" id="confirmModal" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--sm">
+      <div class="modal__head">
+        <h2 id="confirmTitle">¿Seguro?</h2>
+        <p class="muted" id="confirmText"></p>
+      </div>
+      <div class="modal__foot">
+        <button class="btn btn--outline" type="button" data-close>Cancelar</button>
+        <button class="btn btn--danger" type="button" id="confirmOk">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ REGISTRO EN 3 PASOS ============ -->
+  <div class="modal" id="onboarding" role="dialog" aria-modal="true" aria-labelledby="obTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <form class="modal__panel" id="obForm" novalidate>
+      <button class="btn btn--icon btn--ghost modal__x" type="button" data-close aria-label="Cerrar registro"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <header class="modal__head">
+        <p class="eyebrow">Es momento de conectar</p>
+        <h2 id="obTitle">Crea tu perfil en la red</h2>
+        <ol class="stepper" aria-label="Progreso">
+          <li class="is-active"><span>1</span>Datos básicos</li>
+          <li><span>2</span>Campo principal</li>
+          <li><span>3</span>Áreas</li>
+        </ol>
+      </header>
+
+      <div class="ob-steps">
+        <section class="ob-step is-active" data-step="1" aria-label="Paso 1: datos básicos">
+          <div class="ob-avatar-row">
+            <label class="avatar-upload" title="Subir foto (opcional)">
+              <input type="file" id="obPhoto" accept="image/*" hidden />
+              <span class="avatar-upload__img" id="obPhotoPreview">Foto</span>
+              <small>Opcional</small>
+            </label>
+            <div class="field grow">
+              <label for="obName">Nombre completo</label>
+              <input id="obName" type="text" placeholder="Ej: Luisa Fernanda Torres" autocomplete="name" required maxlength="60" />
+              <p class="field__err"></p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="obEmail">Correo institucional</label>
+            <input id="obEmail" type="email" placeholder="nombre.apellido@utadeo.edu.co" autocomplete="email" required />
+            <p class="field__hint">Solo se aceptan correos <strong>@utadeo.edu.co</strong></p>
+            <p class="field__err"></p>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="obPass">Contraseña</label>
+              <div class="pass">
+                <input id="obPass" type="password" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required />
+                <button class="pass__toggle" type="button" data-toggle-pass="obPass">Mostrar</button>
+              </div>
+              <p class="field__err"></p>
+            </div>
+            <div class="field">
+              <label for="obPass2">Confirmar contraseña</label>
+              <input id="obPass2" type="password" placeholder="Repite tu contraseña" autocomplete="new-password" required />
+              <p class="field__err"></p>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="obGender">Género</label>
+              <select id="obGender" required>
+                <option value="">Selecciona…</option>
+                <option value="F">Femenino</option>
+                <option value="M">Masculino</option>
+                <option value="X">No binario</option>
+                <option value="N">Prefiero no decirlo</option>
+              </select>
+              <p class="field__err"></p>
+            </div>
+            <div class="field">
+              <label for="obCity">Ciudad de residencia</label>
+              <input id="obCity" type="text" placeholder="Ej: Bogotá" maxlength="40" />
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <span class="label">Rol</span>
+              <div class="seg seg--full" role="radiogroup" aria-label="Rol">
+                <label><input type="radio" name="rol" value="estudiante" checked /><span>Estudiante</span></label>
+                <label><input type="radio" name="rol" value="egresado" /><span>Egresado/a</span></label>
+              </div>
+            </div>
+            <div class="field" id="semesterField">
+              <label for="obSemester">Semestre</label>
+              <select id="obSemester"></select>
+            </div>
+          </div>
+        </section>
+
+        <section class="ob-step" data-step="2" aria-label="Paso 2: campo principal">
+          <p class="ob-help">Elige el campo de diseño donde vive tu trabajo. Será tu lugar en el panal.</p>
+          <div class="niche-picker" id="nichePicker" role="radiogroup" aria-label="Campo principal"></div>
+          <p class="field__err" id="nicheErr"></p>
+        </section>
+
+        <section class="ob-step" data-step="3" aria-label="Paso 3: áreas y portafolio">
+          <p class="ob-help">Selecciona las áreas en las que tienes experiencia <span class="muted">(máx. 3)</span>.</p>
+          <div class="chips chips--pick" id="areaPicker"></div>
+          <p class="field__err" id="areaErr"></p>
+          <div class="field">
+            <label for="obSkills">Habilidades principales <span class="muted">(separadas por coma)</span></label>
+            <input id="obSkills" type="text" placeholder="Ej: Figma, Prototipado, Fotografía" maxlength="90" />
+          </div>
+          <div class="field">
+            <label for="obBio">Biografía corta</label>
+            <textarea id="obBio" rows="2" maxlength="220" placeholder="Cuéntale a la red qué te mueve como diseñador/a"></textarea>
+          </div>
+          <div class="field">
+            <span class="label">Redes profesionales <span class="muted">(opcional)</span></span>
+            <div class="social-inputs">
+              <label class="social-input"><span class="sbadge sbadge--linkedin">in</span><input id="obLinkedin" type="url" placeholder="linkedin.com/in/…" /></label>
+              <label class="social-input"><span class="sbadge sbadge--behance">Bē</span><input id="obBehance" type="url" placeholder="behance.net/…" /></label>
+              <label class="social-input"><span class="sbadge sbadge--instagram">IG</span><input id="obInstagram" type="url" placeholder="instagram.com/…" /></label>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="modal__foot modal__foot--between">
+        <button class="btn btn--ghost" type="button" id="obBack">Atrás</button>
+        <span class="ob-count" id="obCount">Paso 1 de 3</span>
+        <button class="btn btn--primary" type="button" id="obNext">Continuar</button>
+      </footer>
+    </form>
+  </div>
+
+  <!-- ============ GESTOR DE PROYECTO (brief) ============ -->
+  <div class="modal" id="pmModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--xl">
+      <button class="btn btn--icon btn--ghost modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <header class="modal__head pm-head">
+        <p class="eyebrow" id="pmEyebrow">Gestionar proyecto</p>
+        <h2 id="pmTitle">Nuevo proyecto</h2>
+        <div class="seg pm-tabs" role="tablist" aria-label="Secciones del proyecto">
+          <button class="is-active" type="button" data-pm-tab="info">Proyecto</button>
+          <button type="button" data-pm-tab="equipo">Equipo</button>
+          <button type="button" data-pm-tab="apoyo">Apoyo de la universidad</button>
+          <button type="button" data-pm-tab="brief">Brief</button>
+        </div>
+      </header>
+      <div class="pm-body" id="pmBody"></div>
+      <footer class="modal__foot modal__foot--between pm-foot">
+        <span class="pm-status" id="pmStatus"></span>
+        <div class="pm-actions">
+          <button class="btn btn--ghost" type="button" id="pmDraft">Guardar borrador</button>
+          <button class="btn btn--outline" type="button" id="pmPdf">Descargar PDF</button>
+          <button class="btn btn--dark" type="button" id="pmSend">Enviar a la universidad</button>
+          <button class="btn btn--primary" type="button" id="pmPublish">Publicar</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ============ DETALLE DE PROYECTO ============ -->
+  <div class="modal" id="pdModal" role="dialog" aria-modal="true" aria-label="Detalle del proyecto" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--lg">
+      <button class="btn btn--icon btn--light modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="pd" id="pdBody"></div>
+    </div>
+  </div>
+
+  <!-- ============ CABITO ============ -->
+  <button class="cabito-fab" id="cabitoFab" type="button" aria-label="Abrir a Cabito, el asistente de proyectos" aria-expanded="false" aria-controls="cabito">
+    <span class="cabito-fab__tip">Cabito te apoya en tus proyectos</span>
+    <svg class="cabito-dog" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32.4 33) scale(.86) translate(-32.4 -33)">
+      <path d="M28 20.8C24.5 19.8 19.5 18.7 15.8 19.3 11.6 20 9.4 23.8 9.4 28.6V37.2C9.4 41.6 11 44 13.3 44 15.6 44 17.6 42.4 18.8 40.4"/>
+      <path d="M36.8 20.8C40.3 19.8 45.3 18.7 49 19.3 53.2 20 55.4 23.8 55.4 28.6V37.2C55.4 41.6 53.8 44 51.5 44 49.2 44 47.2 42.4 46 40.4"/>
+      <path d="M21.4 26.2C20.6 30.5 19.9 35.5 19 40.2M43.4 26.2C44.2 30.5 44.9 35.5 45.8 40.2"/>
+      <path d="M19.8 39.6C21 47 26 51.6 32.4 51.6S43.8 47 45 39.6"/>
+      <path d="M28 20.8C27 18.5 26.3 15.6 27.6 14.6 29 13.6 30.6 15.4 31.6 20.6M32.6 20.6C33.4 16.4 34.4 13.8 36 14.3 37.6 14.8 37.4 18 36.8 20.8"/>
+      <circle cx="28.1" cy="28.9" r="1.7" class="f"/><circle cx="36.7" cy="28.9" r="1.7" class="f"/>
+      <path class="f" d="M29.4 36.2H35.4C36.4 36.2 36.8 37.3 36.1 38L33.2 40.5C32.7 40.9 32.1 40.9 31.6 40.5L28.7 38C28 37.3 28.4 36.2 29.4 36.2Z"/>
+      <path d="M32.4 40.6V42.4M27.6 43.4C28.6 45 30.8 45.6 32.4 42.4 34 45.6 36.2 45 37.2 43.4"/>
+    </g></svg>
+  </button>
+
+  <section class="cabito card" id="cabito" aria-hidden="true" aria-label="Chat con Cabito">
+    <header class="cabito__head">
+      <span class="cabito__avatar">
+        <svg class="cabito-dog" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32.4 33) scale(.86) translate(-32.4 -33)">
+      <path d="M28 20.8C24.5 19.8 19.5 18.7 15.8 19.3 11.6 20 9.4 23.8 9.4 28.6V37.2C9.4 41.6 11 44 13.3 44 15.6 44 17.6 42.4 18.8 40.4"/>
+      <path d="M36.8 20.8C40.3 19.8 45.3 18.7 49 19.3 53.2 20 55.4 23.8 55.4 28.6V37.2C55.4 41.6 53.8 44 51.5 44 49.2 44 47.2 42.4 46 40.4"/>
+      <path d="M21.4 26.2C20.6 30.5 19.9 35.5 19 40.2M43.4 26.2C44.2 30.5 44.9 35.5 45.8 40.2"/>
+      <path d="M19.8 39.6C21 47 26 51.6 32.4 51.6S43.8 47 45 39.6"/>
+      <path d="M28 20.8C27 18.5 26.3 15.6 27.6 14.6 29 13.6 30.6 15.4 31.6 20.6M32.6 20.6C33.4 16.4 34.4 13.8 36 14.3 37.6 14.8 37.4 18 36.8 20.8"/>
+      <circle cx="28.1" cy="28.9" r="1.7" class="f"/><circle cx="36.7" cy="28.9" r="1.7" class="f"/>
+      <path class="f" d="M29.4 36.2H35.4C36.4 36.2 36.8 37.3 36.1 38L33.2 40.5C32.7 40.9 32.1 40.9 31.6 40.5L28.7 38C28 37.3 28.4 36.2 29.4 36.2Z"/>
+      <path d="M32.4 40.6V42.4M27.6 43.4C28.6 45 30.8 45.6 32.4 42.4 34 45.6 36.2 45 37.2 43.4"/>
+    </g></svg>
+      </span>
+      <div><strong>Cabito</strong><small>Te apoya en tus proyectos</small></div>
+      <button class="btn btn--icon btn--ghost" id="cabitoReset" type="button" aria-label="Nueva conversación" title="Nueva conversación"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg></button>
+      <button class="btn btn--icon btn--ghost" id="cabitoClose" type="button" aria-label="Cerrar chat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </header>
+    <div class="cabito__log" id="cabitoLog" aria-live="polite"></div>
+    <form class="cabito__compose" id="cabitoForm">
+      <textarea id="cabitoInput" rows="3" placeholder="Primero elige un sector de desempeño" aria-label="Descripción del proyecto" disabled></textarea>
+      <div class="cabito__bar">
+        <span class="wc" id="wordCount">0 / 300 palabras</span>
+        <button class="btn btn--primary btn--sm" type="submit" id="cabitoSend" disabled>Enviar</button>
+      </div>
+    </form>
+  </section>
+
+  <div class="tip" id="tip" role="tooltip"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
