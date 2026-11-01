@@ -669,6 +669,12 @@ svg.hive { position: absolute; inset: 0; width: 100%; height: 100%; stroke: none
 .rec__bar { grid-column: 1 / -1; height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; margin-top: 8px; }
 .rec__bar i { display: block; height: 100%; background: var(--c); width: var(--w); }
 .rec-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.msg-list { margin: 6px 0 0; padding-left: 18px; }
+.msg-list li { margin: 2px 0; }
+.countdown { margin: 10px 0 0 !important; font-size: 12px; color: var(--gray); }
+.countdown b { font-weight: 500; color: var(--primary); font-variant-numeric: tabular-nums; }
+.countdown button { border: 0; background: none; padding: 0; color: var(--primary); font-size: 12px; text-decoration: underline; cursor: pointer; }
+.about__text > p strong { font-weight: 500; color: var(--secondary); }
 .cabito__compose { padding: 12px 14px 14px; border-top: 1px solid var(--line); background: var(--white); }
 .cabito__compose textarea { width: 100%; resize: none; border-radius: var(--r-sm); padding: 10px 12px; border: 1px solid var(--line-2); background: var(--white); font-size: 13.5px; line-height: 1.55; transition: border-color .15s var(--ease); }
 .cabito__compose textarea:focus { outline: none; border-color: var(--primary); }

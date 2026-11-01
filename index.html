@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NexoTadeo · La red para conectar</title>
-  <meta name="description" content="NexoTadeo: red interactiva en forma de panal que conecta a estudiantes y egresados de Diseño Industrial de la Universidad Jorge Tadeo Lozano." />
+  <title>NexoTadeo · Red de gestión de conocimiento</title>
+  <meta name="description" content="NexoTadeo: red de gestión de conocimiento que conecta a estudiantes y egresados de Diseño Industrial de la Universidad Jorge Tadeo Lozano." />
   <meta name="theme-color" content="#F8F9FD" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2l12 7v14l-12 7-12-7V9z' fill='%235A81FA'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,9 +19,9 @@
     <div class="intro__panel">
       <div class="intro__copy">
         <p class="intro__small">Universidad Jorge Tadeo Lozano · Diseño Industrial</p>
-        <h1 class="intro__title">Bienvenido a NexoTadeo:<br><span>La red para conectar</span></h1>
-        <p class="intro__sub">Explora el ecosistema de Diseño Industrial.</p>
-        <button class="btn btn--light" id="introEnter" type="button">Entrar al panal</button>
+        <h1 class="intro__title">Bienvenido a NexoTadeo:<br><span>Red de gestión de conocimiento</span></h1>
+        <p class="intro__sub">Explora el ecosistema de Diseño Industrial de la Utadeo</p>
+        <button class="btn btn--light" id="introEnter" type="button">Entrar a la red</button>
         <div class="intro__bar" aria-hidden="true"><i></i></div>
       </div>
     </div>
@@ -48,7 +48,7 @@
     </div>
 
     <nav class="tabs" role="tablist" aria-label="Secciones">
-      <button class="tabs__btn is-active" role="tab" aria-selected="true" data-view="panal" type="button">Panal</button>
+      <button class="tabs__btn is-active" role="tab" aria-selected="true" data-view="panal" type="button">Red</button>
       <button class="tabs__btn" role="tab" aria-selected="false" data-view="proyectos" type="button">Proyectos</button>
     </nav>
 
@@ -60,22 +60,22 @@
   </header>
 
   <!-- ============ 2 · VISTA PANAL ============ -->
-  <section class="view view--panal" id="viewPanal" aria-label="Panal">
+  <section class="view view--panal" id="viewPanal" aria-label="Red">
     <div class="panal-head">
       <h2 class="greeting" id="greetingHi">¡Hola!</h2>
-      <p class="greeting__sub">Explora el ecosistema de Diseño Industrial.</p>
+      <p class="greeting__sub">Explora el ecosistema de Diseño Industrial de la Utadeo</p>
       <div class="panal-meta">
         <span class="stat-pill" id="statPill" tabindex="0">—</span>
         <nav class="legend" id="legend" aria-label="Campos de diseño"></nav>
       </div>
     </div>
 
-    <main class="viewport" id="viewport" aria-label="Mapa interactivo del panal. Arrastra para moverte y usa la rueda para acercar o alejar.">
+    <main class="viewport" id="viewport" aria-label="Mapa interactivo de la red. Arrastra para moverte y usa la rueda para acercar o alejar.">
       <div class="world intro-anim" id="world">
         <svg class="links" id="links" aria-hidden="true"></svg>
         <div class="cells" id="cells"></div>
       </div>
-      <div class="loader" id="loader">Cargando el panal…</div>
+      <div class="loader" id="loader">Cargando la red…</div>
     </main>
 
     <aside class="niche-card card" id="nicheCard" aria-hidden="true" aria-labelledby="nicheTitle"></aside>
@@ -84,11 +84,11 @@
       <button class="tool" id="zoomOut" type="button" aria-label="Alejar" title="Alejar (−)"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button>
       <span class="zoom-level" id="zoomLevel">100%</span>
       <button class="tool" id="zoomIn" type="button" aria-label="Acercar" title="Acercar (+)"><svg viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></svg></button>
-      <button class="tool" id="zoomFit" type="button" aria-label="Ver todo el panal" title="Ver todo (0)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      <button class="tool" id="zoomFit" type="button" aria-label="Ver toda la red" title="Ver toda la red (0)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
       <span class="toolbar__sep"></span>
       <label class="search">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="searchInput" type="search" placeholder="Buscar persona, área o habilidad" aria-label="Buscar en el panal" autocomplete="off" />
+        <input id="searchInput" type="search" placeholder="Buscar persona, área o habilidad" aria-label="Buscar en la red" autocomplete="off" />
       </label>
       <button class="btn btn--primary btn--sm" id="teamBtn" type="button">Crear un equipo</button>
     </div>
@@ -100,7 +100,6 @@
       <header class="pj-head">
         <div>
           <h2 class="pj-title">Proyectos</h2>
-          <p class="pj-sub">Lo que la red está creando y lo que ya hizo realidad.</p>
         </div>
         <button class="btn btn--primary" id="newProjectBtn" type="button">Publicar proyecto</button>
       </header>
@@ -264,7 +263,7 @@
         </section>
 
         <section class="ob-step" data-step="2" aria-label="Paso 2: campo principal">
-          <p class="ob-help">Elige el campo de diseño donde vive tu trabajo. Será tu lugar en el panal.</p>
+          <p class="ob-help">Elige el campo de diseño donde vive tu trabajo. Será tu lugar en la red.</p>
           <div class="niche-picker" id="nichePicker" role="radiogroup" aria-label="Campo principal"></div>
           <p class="field__err" id="nicheErr"></p>
         </section>
@@ -306,7 +305,7 @@
     <div class="modal__panel modal__panel--xl">
       <button class="btn btn--icon btn--ghost modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       <header class="modal__head pm-head">
-        <p class="eyebrow" id="pmEyebrow">Gestionar proyecto</p>
+        <p class="eyebrow" id="pmEyebrow">Proyecto</p>
         <h2 id="pmTitle">Nuevo proyecto</h2>
         <div class="seg pm-tabs" role="tablist" aria-label="Secciones del proyecto">
           <button class="is-active" type="button" data-pm-tab="info">Proyecto</button>
@@ -321,7 +320,7 @@
         <div class="pm-actions">
           <button class="btn btn--ghost" type="button" id="pmDraft">Guardar borrador</button>
           <button class="btn btn--outline" type="button" id="pmPdf">Descargar PDF</button>
-          <button class="btn btn--dark" type="button" id="pmSend">Enviar a la universidad</button>
+          <button class="btn btn--dark" type="button" id="pmSend">Enviar a la Universidad</button>
           <button class="btn btn--primary" type="button" id="pmPublish">Publicar</button>
         </div>
       </footer>
@@ -338,8 +337,8 @@
   </div>
 
   <!-- ============ CABITO ============ -->
-  <button class="cabito-fab" id="cabitoFab" type="button" aria-label="Abrir a Cabito, el asistente de proyectos" aria-expanded="false" aria-controls="cabito">
-    <span class="cabito-fab__tip">Cabito te apoya en tus proyectos</span>
+  <button class="cabito-fab" id="cabitoFab" type="button" aria-label="Abrir a Cabito: crea un proyecto" aria-expanded="false" aria-controls="cabito">
+    <span class="cabito-fab__tip">Crea un proyecto</span>
     <svg class="cabito-dog" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32.4 33) scale(.86) translate(-32.4 -33)">
       <path d="M28 20.8C24.5 19.8 19.5 18.7 15.8 19.3 11.6 20 9.4 23.8 9.4 28.6V37.2C9.4 41.6 11 44 13.3 44 15.6 44 17.6 42.4 18.8 40.4"/>
       <path d="M36.8 20.8C40.3 19.8 45.3 18.7 49 19.3 53.2 20 55.4 23.8 55.4 28.6V37.2C55.4 41.6 53.8 44 51.5 44 49.2 44 47.2 42.4 46 40.4"/>
@@ -366,7 +365,7 @@
       <path d="M32.4 40.6V42.4M27.6 43.4C28.6 45 30.8 45.6 32.4 42.4 34 45.6 36.2 45 37.2 43.4"/>
     </g></svg>
       </span>
-      <div><strong>Cabito</strong><small>Te apoya en tus proyectos</small></div>
+      <div><strong>Cabito</strong><small>Crea un proyecto</small></div>
       <button class="btn btn--icon btn--ghost" id="cabitoReset" type="button" aria-label="Nueva conversación" title="Nueva conversación"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg></button>
       <button class="btn btn--icon btn--ghost" id="cabitoClose" type="button" aria-label="Cerrar chat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </header>
