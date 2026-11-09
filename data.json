@@ -2,10 +2,11 @@
   "meta": {
     "nombre": "NexoTadeo",
     "subtitulo": "Red de gestión de conocimiento",
-    "version": "3.0.0",
+    "version": "4.0.0",
     "claveDemo": "nexo2026",
     "dominio": "utadeo.edu.co",
-    "correoUniversidad": ""
+    "correoUniversidad": "",
+    "correoComentarios": ""
   },
   "nichos": [
     {
@@ -497,7 +498,36 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=mobiliario",
         "instagram": "https://www.instagram.com/explore/tags/mobiliario/"
-      }
+      },
+      "tagline": "Mobiliario modular que se arma sin herramientas.",
+      "abierto": true,
+      "productos": [
+        {
+          "id": "p01-pr1",
+          "titulo": "Banco Pliegue",
+          "descripcion": "Banco modular de contrachapado que se arma por encaje.",
+          "anio": "2025",
+          "forma": "mueble",
+          "imagenes": [],
+          "enlace": ""
+        },
+        {
+          "id": "p01-pr2",
+          "titulo": "Repisa Nodo",
+          "descripcion": "Sistema de repisas con un solo tipo de unión impresa en 3D.",
+          "anio": "2024",
+          "forma": "repisa",
+          "imagenes": [],
+          "enlace": ""
+        }
+      ],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "8.º semestre"
+        }
+      ]
     },
     {
       "id": "p02",
@@ -523,7 +553,32 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=packaging",
         "instagram": "https://www.instagram.com/explore/tags/packagingdesign/"
-      }
+      },
+      "tagline": "Empaques que llegan a la línea de producción listos.",
+      "abierto": false,
+      "productos": [
+        {
+          "id": "p02-pr1",
+          "titulo": "Envase Grano",
+          "descripcion": "Empaque compostable para café de origen.",
+          "anio": "2025",
+          "forma": "envase",
+          "imagenes": [],
+          "enlace": ""
+        }
+      ],
+      "trayectoria": [
+        {
+          "cargo": "Diseñador de empaques",
+          "lugar": "Alimentos del Valle",
+          "periodo": "2020 – hoy"
+        },
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresado 2019"
+        }
+      ]
     },
     {
       "id": "p03",
@@ -549,7 +604,22 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=service%20design",
         "instagram": "https://www.instagram.com/explore/tags/servicedesign/"
-      }
+      },
+      "tagline": "Servicios que funcionan por dentro y se sienten por fuera.",
+      "abierto": true,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Service designer",
+          "lugar": "Estudio Trama",
+          "periodo": "2023 – hoy"
+        },
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresada 2022"
+        }
+      ]
     },
     {
       "id": "p04",
@@ -575,7 +645,17 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=experience%20design",
         "instagram": "https://www.instagram.com/explore/tags/experiencedesign/"
-      }
+      },
+      "tagline": "Experiencias donde la gente participa.",
+      "abierto": false,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "6.º semestre"
+        }
+      ]
     },
     {
       "id": "p05",
@@ -601,7 +681,55 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=biomaterials",
         "instagram": "https://www.instagram.com/explore/tags/biomaterials/"
-      }
+      },
+      "tagline": "Diseño con lo que otros botan: biomateriales y objetos circulares.",
+      "abierto": true,
+      "productos": [
+        {
+          "id": "p05-pr1",
+          "titulo": "Banco Raíz",
+          "descripcion": "Banco de plástico postconsumo recuperado en Bogotá.",
+          "anio": "2025",
+          "forma": "mueble",
+          "imagenes": [],
+          "enlace": ""
+        },
+        {
+          "id": "p05-pr2",
+          "titulo": "Matera Cáscara",
+          "descripcion": "Matera de biomaterial a partir de cáscara de café.",
+          "anio": "2024",
+          "forma": "matera",
+          "imagenes": [],
+          "enlace": ""
+        },
+        {
+          "id": "p05-pr3",
+          "titulo": "Lámpara Bagazo",
+          "descripcion": "Pantalla de fibra de caña prensada.",
+          "anio": "2024",
+          "forma": "lampara",
+          "imagenes": [],
+          "enlace": ""
+        }
+      ],
+      "trayectoria": [
+        {
+          "cargo": "Fundadora",
+          "lugar": "Raíz Material",
+          "periodo": "2025 – hoy"
+        },
+        {
+          "cargo": "Investigadora",
+          "lugar": "Laboratorio de Materiales Utadeo",
+          "periodo": "2023 – 2024"
+        },
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresada 2024"
+        }
+      ]
     },
     {
       "id": "p06",
@@ -627,7 +755,27 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=solar%20design",
         "instagram": "https://www.instagram.com/explore/tags/ecodesign/"
-      }
+      },
+      "tagline": "Prototipos con energía limpia para zonas rurales.",
+      "abierto": true,
+      "productos": [
+        {
+          "id": "p06-pr1",
+          "titulo": "Cargador Sol",
+          "descripcion": "Cargador solar plegable para veredas sin red eléctrica.",
+          "anio": "2025",
+          "forma": "solar",
+          "imagenes": [],
+          "enlace": ""
+        }
+      ],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "9.º semestre"
+        }
+      ]
     },
     {
       "id": "p07",
@@ -653,7 +801,32 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=interior%20design",
         "instagram": "https://www.instagram.com/explore/tags/interiordesign/"
-      }
+      },
+      "tagline": "Espacios que se sienten, se escuchan y se recuerdan.",
+      "abierto": false,
+      "productos": [
+        {
+          "id": "p07-pr1",
+          "titulo": "Lámpara Curití",
+          "descripcion": "Lámpara de fique tejida con artesanas de Curití.",
+          "anio": "2025",
+          "forma": "lampara",
+          "imagenes": [],
+          "enlace": ""
+        }
+      ],
+      "trayectoria": [
+        {
+          "cargo": "Diseñadora de interiores",
+          "lugar": "Luz & Forma",
+          "periodo": "2021 – hoy"
+        },
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresada 2020"
+        }
+      ]
     },
     {
       "id": "p08",
@@ -679,7 +852,27 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=inclusive%20design",
         "instagram": "https://www.instagram.com/explore/tags/inclusivedesign/"
-      }
+      },
+      "tagline": "Diseño para la salud y la autonomía.",
+      "abierto": true,
+      "productos": [
+        {
+          "id": "p08-pr1",
+          "titulo": "Agarre+",
+          "descripcion": "Adaptador de cubiertos para personas con artritis.",
+          "anio": "2024",
+          "forma": "agarre",
+          "imagenes": [],
+          "enlace": ""
+        }
+      ],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "7.º semestre"
+        }
+      ]
     },
     {
       "id": "p09",
@@ -705,7 +898,22 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=branding%20strategy",
         "instagram": "https://www.instagram.com/explore/tags/branding/"
-      }
+      },
+      "tagline": "De la idea al modelo de negocio.",
+      "abierto": false,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Estratega de marca",
+          "lugar": "Independiente",
+          "periodo": "2022 – hoy"
+        },
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresada 2021"
+        }
+      ]
     },
     {
       "id": "p10",
@@ -731,7 +939,17 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=system%20design",
         "instagram": "https://www.instagram.com/explore/tags/designmanagement/"
-      }
+      },
+      "tagline": "Sistemas que hacen escalar a los equipos.",
+      "abierto": false,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "10.º semestre"
+        }
+      ]
     },
     {
       "id": "p11",
@@ -757,7 +975,17 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=social%20design",
         "instagram": "https://www.instagram.com/explore/tags/socialdesign/"
-      }
+      },
+      "tagline": "Herramientas pedagógicas con comunidades.",
+      "abierto": true,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "5.º semestre"
+        }
+      ]
     },
     {
       "id": "p12",
@@ -783,7 +1011,22 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=exhibition%20design",
         "instagram": "https://www.instagram.com/explore/tags/exhibitiondesign/"
-      }
+      },
+      "tagline": "Exposiciones sobre memoria y patrimonio.",
+      "abierto": false,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Museógrafo",
+          "lugar": "Museo de Bogotá",
+          "periodo": "2019 – hoy"
+        },
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresado 2018"
+        }
+      ]
     },
     {
       "id": "p13",
@@ -809,7 +1052,32 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=ui%20ux",
         "instagram": "https://www.instagram.com/explore/tags/uxdesign/"
-      }
+      },
+      "tagline": "Productos digitales claros y accesibles.",
+      "abierto": true,
+      "productos": [
+        {
+          "id": "p13-pr1",
+          "titulo": "Kit UI Salud",
+          "descripcion": "Sistema de componentes de alto contraste para apps de salud.",
+          "anio": "2025",
+          "forma": "ui",
+          "imagenes": [],
+          "enlace": ""
+        }
+      ],
+      "trayectoria": [
+        {
+          "cargo": "Product designer",
+          "lugar": "Fintech Andina",
+          "periodo": "2023 – hoy"
+        },
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresada 2022"
+        }
+      ]
     },
     {
       "id": "p14",
@@ -835,7 +1103,207 @@
         "linkedin": "https://www.linkedin.com/",
         "behance": "https://www.behance.net/search/projects?search=augmented%20reality",
         "instagram": "https://www.instagram.com/explore/tags/augmentedreality/"
-      }
+      },
+      "tagline": "Realidad aumentada y objetos conectados.",
+      "abierto": true,
+      "productos": [
+        {
+          "id": "p14-pr1",
+          "titulo": "Guía AR Museo",
+          "descripcion": "Recorrido en realidad aumentada para el museo del campus.",
+          "anio": "2025",
+          "forma": "ar",
+          "imagenes": [],
+          "enlace": ""
+        }
+      ],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "8.º semestre"
+        }
+      ]
+    },
+    {
+      "id": "p15",
+      "nombre": "Paula Rincón",
+      "genero": "F",
+      "rol": "estudiante",
+      "semestre": 7,
+      "foto": "",
+      "avatar": {
+        "img": "av12",
+        "bg": "#FFE0E0"
+      },
+      "avatarHistoria": "Me gusta mi pelo esponjado: así llego al taller de cerámica todos los días.",
+      "ciudad": "Bogotá",
+      "correo": "paula.rincon@utadeo.edu.co",
+      "bio": "Diseño objetos pequeños con cerámica y metal. Me interesa la joyería contemporánea hecha en Bogotá.",
+      "nicho": "producto",
+      "areas": [
+        "producto-objetos"
+      ],
+      "habilidades": [
+        "Cerámica",
+        "Joyería",
+        "Torno"
+      ],
+      "portafolio": {},
+      "tagline": "",
+      "abierto": true,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "7.º semestre"
+        }
+      ]
+    },
+    {
+      "id": "p16",
+      "nombre": "Tomás Acosta",
+      "genero": "M",
+      "rol": "egresado",
+      "semestre": null,
+      "foto": "",
+      "avatar": {
+        "img": "av27",
+        "bg": "#FFF1C7"
+      },
+      "avatarHistoria": "Escogí la barba porque soy el que siempre lleva el café a las sesiones.",
+      "ciudad": "Bogotá",
+      "correo": "tomas.acosta@utadeo.edu.co",
+      "bio": "Investigo con usuarios y prototipo servicios públicos más humanos.",
+      "nicho": "servicios",
+      "areas": [
+        "servicios-servicios"
+      ],
+      "habilidades": [
+        "Investigación etnográfica",
+        "Prototipos de servicio",
+        "Miro"
+      ],
+      "portafolio": {},
+      "tagline": "",
+      "abierto": true,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresado 2025"
+        }
+      ]
+    },
+    {
+      "id": "p17",
+      "nombre": "Diego Peña",
+      "genero": "M",
+      "rol": "estudiante",
+      "semestre": 9,
+      "foto": "",
+      "avatar": {
+        "img": "av01",
+        "bg": "#D8F3E3"
+      },
+      "avatarHistoria": "El turbante es por mi abuelo: me enseñó a reparar todo antes de botarlo.",
+      "ciudad": "Bogotá",
+      "correo": "diego.peña@utadeo.edu.co",
+      "bio": "Recupero madera y piezas desechadas para darles una segunda vida como mobiliario.",
+      "nicho": "sostenibilidad",
+      "areas": [
+        "sostenibilidad-circulares"
+      ],
+      "habilidades": [
+        "Upcycling",
+        "Madera recuperada",
+        "Fusion 360"
+      ],
+      "portafolio": {},
+      "tagline": "",
+      "abierto": true,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "9.º semestre"
+        }
+      ]
+    },
+    {
+      "id": "p18",
+      "nombre": "Mariana López",
+      "genero": "F",
+      "rol": "estudiante",
+      "semestre": 8,
+      "foto": "",
+      "avatar": {
+        "img": "av22",
+        "bg": "#F1DDF7"
+      },
+      "avatarHistoria": "Mi avatar sonríe porque me encanta cuando un usuario dice \"ah, era fácil\".",
+      "ciudad": "Bogotá",
+      "correo": "mariana.lopez@utadeo.edu.co",
+      "bio": "Diseño interfaces accesibles y me encanta probarlas con personas reales.",
+      "nicho": "uxui",
+      "areas": [
+        "uxui-interfaz"
+      ],
+      "habilidades": [
+        "Figma",
+        "Prototipado rápido",
+        "Accesibilidad web"
+      ],
+      "portafolio": {},
+      "tagline": "",
+      "abierto": true,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "8.º semestre"
+        }
+      ]
+    },
+    {
+      "id": "p19",
+      "nombre": "Juliana Ríos",
+      "genero": "F",
+      "rol": "egresado",
+      "semestre": null,
+      "foto": "",
+      "avatar": {
+        "img": "av08",
+        "bg": "#DCEBFB"
+      },
+      "avatarHistoria": "Las gafas son de tanto leer cuentos a los niños de los talleres.",
+      "ciudad": "Bogotá",
+      "correo": "juliana.rios@utadeo.edu.co",
+      "bio": "Diseño material didáctico y talleres para colegios públicos.",
+      "nicho": "social",
+      "areas": [
+        "social-educacion"
+      ],
+      "habilidades": [
+        "Talleres",
+        "Ilustración",
+        "Material didáctico"
+      ],
+      "portafolio": {},
+      "tagline": "",
+      "abierto": true,
+      "productos": [],
+      "trayectoria": [
+        {
+          "cargo": "Diseño Industrial",
+          "lugar": "Utadeo",
+          "periodo": "Egresada 2025"
+        }
+      ]
     }
   ],
   "sectores": [
@@ -1004,7 +1472,26 @@
       "enlaces": [],
       "borrador": false,
       "enviado": null,
-      "tipo": "producto"
+      "tipo": "producto",
+      "roles": {
+        "p05": "Lideró la investigación del material",
+        "p01": "Diseñó las piezas modulares",
+        "p06": "Prototipado y pruebas en parque"
+      },
+      "abierto": true,
+      "busca": [
+        {
+          "rol": "Gestión",
+          "nicho": "gestion",
+          "cupos": 1
+        },
+        {
+          "rol": "Producto",
+          "nicho": "producto",
+          "cupos": 1
+        }
+      ],
+      "cierra": "2026-11-14"
     },
     {
       "id": "pr02",
@@ -1027,7 +1514,26 @@
       "enlaces": [],
       "borrador": false,
       "enviado": null,
-      "tipo": "producto-digital"
+      "tipo": "producto-digital",
+      "roles": {
+        "p13": "Lideró el diseño de interfaz",
+        "p08": "Pruebas de accesibilidad",
+        "p03": "Mapa del servicio de citas"
+      },
+      "abierto": true,
+      "busca": [
+        {
+          "rol": "UX/UI",
+          "nicho": "uxui",
+          "cupos": 2
+        },
+        {
+          "rol": "Servicios",
+          "nicho": "servicios",
+          "cupos": 1
+        }
+      ],
+      "cierra": "2026-11-17"
     },
     {
       "id": "pr03",
@@ -1049,7 +1555,14 @@
       "enlaces": [],
       "borrador": false,
       "enviado": null,
-      "tipo": "exposicion"
+      "tipo": "exposicion",
+      "roles": {
+        "p12": "Curaduría y museografía",
+        "p11": "Talleres con las familias",
+        "p07": "Iluminación del montaje"
+      },
+      "abierto": false,
+      "busca": []
     },
     {
       "id": "pr04",
@@ -1071,7 +1584,14 @@
       "enlaces": [],
       "borrador": false,
       "enviado": null,
-      "tipo": "evento"
+      "tipo": "evento",
+      "roles": {
+        "p09": "Estrategia y modelo de sostenibilidad",
+        "p04": "Experiencia del visitante",
+        "p10": "Logística y operación"
+      },
+      "abierto": false,
+      "busca": []
     },
     {
       "id": "pr05",
@@ -1093,7 +1613,26 @@
       "enlaces": [],
       "borrador": false,
       "enviado": null,
-      "tipo": "producto"
+      "tipo": "producto",
+      "roles": {
+        "p11": "Diseño pedagógico",
+        "p05": "Materiales del kit",
+        "p02": "Empaques didácticos"
+      },
+      "abierto": true,
+      "busca": [
+        {
+          "rol": "Producto",
+          "nicho": "producto",
+          "cupos": 1
+        },
+        {
+          "rol": "Ilustración",
+          "nicho": "social",
+          "cupos": 1
+        }
+      ],
+      "cierra": "2026-11-20"
     },
     {
       "id": "pr06",
@@ -1115,7 +1654,26 @@
       "enlaces": [],
       "borrador": false,
       "enviado": null,
-      "tipo": "producto"
+      "tipo": "producto",
+      "roles": {
+        "p08": "Diseño inclusivo",
+        "p14": "Balizas conectadas",
+        "p13": "Señales y pictogramas"
+      },
+      "abierto": true,
+      "busca": [
+        {
+          "rol": "Hábitat",
+          "nicho": "habitat",
+          "cupos": 1
+        },
+        {
+          "rol": "Prototipado",
+          "nicho": "producto",
+          "cupos": 1
+        }
+      ],
+      "cierra": "2026-11-23"
     },
     {
       "id": "pr07",
@@ -1137,7 +1695,161 @@
       "enlaces": [],
       "borrador": false,
       "enviado": null,
-      "tipo": "evento"
+      "tipo": "evento",
+      "roles": {
+        "p03": "Diseño del servicio",
+        "p07": "Puntos de la ruta",
+        "p04": "Experiencias guiadas"
+      },
+      "abierto": false,
+      "busca": []
+    },
+    {
+      "id": "pr08",
+      "titulo": "Lámpara de fibra de fique",
+      "sector": "industria-turismo",
+      "estado": "ejecucion",
+      "autor": "p07",
+      "participantes": [
+        "p15"
+      ],
+      "roles": {
+        "p07": "Diseño de la colección",
+        "p15": "Prototipos cerámicos"
+      },
+      "areas": [
+        "producto-objetos",
+        "habitat-interiores"
+      ],
+      "descripcion": "Colección de lámparas tejidas con artesanas de Curití. Buscamos llevarla a producción en serie sin perder el oficio.",
+      "creado": "2026-11-06",
+      "imagenes": [],
+      "enlaces": [],
+      "borrador": false,
+      "enviado": null,
+      "tipo": "producto",
+      "abierto": true,
+      "busca": [
+        {
+          "rol": "Producto",
+          "nicho": "producto",
+          "cupos": 1
+        },
+        {
+          "rol": "Sostenibilidad",
+          "nicho": "sostenibilidad",
+          "cupos": 1
+        }
+      ],
+      "cierra": "2026-12-06"
+    },
+    {
+      "id": "pr09",
+      "titulo": "Taller de juguetes con material recuperado",
+      "sector": "educacion",
+      "estado": "ejecucion",
+      "autor": "p19",
+      "participantes": [
+        "p17"
+      ],
+      "roles": {
+        "p19": "Diseño del taller",
+        "p17": "Piezas en madera recuperada"
+      },
+      "areas": [
+        "social-educacion",
+        "sostenibilidad-circulares"
+      ],
+      "descripcion": "Talleres en colegios donde niños y niñas diseñan juguetes con madera y plástico recuperados.",
+      "creado": "2026-10-28",
+      "imagenes": [],
+      "enlaces": [],
+      "borrador": false,
+      "enviado": null,
+      "tipo": "taller",
+      "abierto": false,
+      "busca": []
+    }
+  ],
+  "equipos": [
+    {
+      "id": "eq01",
+      "nombre": "Circular Lab",
+      "descripcion": "Mobiliario y objetos con materiales recuperados de barrios de Bogotá.",
+      "lider": "p05",
+      "miembros": [
+        "p05",
+        "p01",
+        "p06"
+      ],
+      "publico": true,
+      "busca": [
+        "Gestión"
+      ],
+      "creado": "2026-09-10"
+    },
+    {
+      "id": "eq02",
+      "nombre": "Ruta Candelaria",
+      "descripcion": "Experiencias y recorridos de diseño para el centro histórico.",
+      "lider": "p03",
+      "miembros": [
+        "p03",
+        "p04",
+        "p16"
+      ],
+      "publico": true,
+      "busca": [
+        "UX/UI"
+      ],
+      "creado": "2026-08-02"
+    },
+    {
+      "id": "eq03",
+      "nombre": "Accesible+",
+      "descripcion": "Señalética y espacios pensados para personas con discapacidad.",
+      "lider": "p08",
+      "miembros": [
+        "p08",
+        "p07",
+        "p13",
+        "p14"
+      ],
+      "publico": true,
+      "busca": [],
+      "creado": "2026-07-15"
+    },
+    {
+      "id": "eq04",
+      "nombre": "Mesa Campesina",
+      "descripcion": "Pedagogía y memoria con comunidades rurales de Cundinamarca.",
+      "lider": "p11",
+      "miembros": [
+        "p11",
+        "p12",
+        "p19"
+      ],
+      "publico": true,
+      "busca": [
+        "Producto"
+      ],
+      "creado": "2026-06-20"
+    },
+    {
+      "id": "eq05",
+      "nombre": "Pixel & Fique",
+      "descripcion": "Interfaces para que artesanos vendan en línea.",
+      "lider": "p18",
+      "miembros": [
+        "p18",
+        "p15"
+      ],
+      "publico": true,
+      "busca": [
+        "Servicios",
+        "Gestión"
+      ],
+      "creado": "2026-10-12"
     }
   ]
 }
