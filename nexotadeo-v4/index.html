@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NexoTadeo · Red de gestión de conocimiento</title>
+  <meta name="description" content="NexoTadeo conecta a estudiantes y egresados de Diseño Industrial de la Utadeo para formar equipos, mostrar su trabajo y crear proyectos juntos." />
+  <meta name="theme-color" content="#F6F7FB" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2l12 7v14l-12 7-12-7V9z' fill='%235A81FA'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- UX: enlace de salto para teclado y lectores de pantalla -->
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <!-- =====================================================
+       1 · INICIAR SESIÓN (primera pantalla)
+       UX: patrón en Z → marca y propuesta de valor a la izquierda,
+       acción principal (formulario) a la derecha.
+       ===================================================== -->
+  <section id="auth" class="auth" aria-labelledby="authTitle" hidden>
+    <div class="auth__brand">
+      <img class="auth__logo" src="assets/logo-nexotadeo.png" alt="NexoTadeo" width="380" height="206" />
+      <h1 class="auth__title" id="authTitle">Red de gestión de conocimiento</h1>
+      <p class="auth__sub">Estudiantes y egresados de Diseño Industrial de la Utadeo, conectados para crear juntos.</p>
+      <div class="auth__hive" id="authHive" aria-hidden="true"></div>
+    </div>
+
+    <div class="auth__card card">
+      <div class="seg seg--full auth__tabs" role="tablist" aria-label="Acceso">
+        <button type="button" role="tab" id="tabLogin" aria-controls="paneLogin" aria-selected="true" class="is-active">Iniciar sesión</button>
+        <button type="button" role="tab" id="tabJoin" aria-controls="paneJoin" aria-selected="false">Unirme a la red</button>
+      </div>
+
+      <form class="auth__pane is-active" id="paneLogin" role="tabpanel" aria-labelledby="tabLogin" novalidate>
+        <h2 class="auth__h">¡Hola de nuevo!</h2>
+        <p class="muted">Entra con tu correo institucional o tu nombre completo.</p>
+        <div class="field">
+          <label for="loginName">Correo o nombre completo</label>
+          <input id="loginName" type="text" autocomplete="username" placeholder="nombre.apellido@utadeo.edu.co" required />
+        </div>
+        <div class="field">
+          <label for="loginPass">Contraseña</label>
+          <div class="pass">
+            <input id="loginPass" type="password" autocomplete="current-password" placeholder="Tu contraseña" required />
+            <button class="pass__toggle" type="button" data-toggle-pass="loginPass" aria-label="Mostrar contraseña">Mostrar</button>
+          </div>
+        </div>
+        <div class="auth__row">
+          <label class="check check--inline"><input type="checkbox" id="loginRemember" checked /><span>Recordarme</span></label>
+          <button type="button" class="link" id="forgotBtn">¿Olvidaste tu contraseña?</button>
+        </div>
+        <p class="form-error" id="loginErr" role="alert"></p>
+        <button class="btn btn--primary btn--block btn--lg" type="submit">Iniciar sesión</button>
+        <div class="or" aria-hidden="true">o</div>
+        <button class="btn btn--outline btn--block" type="button" data-join>Unirme a la red</button>
+        <button class="btn btn--ghost btn--block btn--sm" type="button" id="guestBtn">Explorar la red sin cuenta</button>
+        <p class="auth__demo" id="demoHint"></p>
+      </form>
+
+      <div class="auth__pane" id="paneJoin" role="tabpanel" aria-labelledby="tabJoin" hidden>
+        <h2 class="auth__h">Únete a la red</h2>
+        <p class="muted">Crea tu perfil en 5 minutos con tu correo <strong>@utadeo.edu.co</strong>.</p>
+        <ul class="auth__list">
+          <li><span class="auth__dot">1</span>Tus datos, tu campo y tus áreas de diseño</li>
+          <li><span class="auth__dot">2</span>Tus aptitudes únicas</li>
+          <li><span class="auth__dot">3</span>Tu avatar o tu foto, y su historia</li>
+          <li><span class="auth__dot">4</span>Tus proyectos y quién participó en ellos</li>
+        </ul>
+        <button class="btn btn--primary btn--block btn--lg" type="button" data-join>Crear mi perfil</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       2 · UNIRME A LA RED (registro en una sola página)
+       UX: secciones numeradas = progreso visible sin ocultar pasos;
+       el usuario puede revisar todo antes de enviar.
+       ===================================================== -->
+  <section id="join" class="join" aria-labelledby="joinTitle" hidden>
+    <header class="join__top">
+      <button class="home-logo" type="button" data-auth-back aria-label="Volver al inicio de sesión"><img src="assets/logo-nexotadeo.png" alt="NexoTadeo" /></button>
+      <p>¿Ya tienes cuenta? <button class="link" type="button" data-auth-back>Inicia sesión</button></p>
+    </header>
+    <form class="join__card card" id="obForm" novalidate>
+      <div class="join__head">
+        <p class="eyebrow">Es momento de conectar</p>
+        <h1 id="joinTitle">Crea tu perfil en la red</h1>
+        <nav class="join__steps" aria-label="Secciones del registro">
+          <a href="#jsDatos">1 Datos</a><a href="#jsCampo">2 Campo</a><a href="#jsApt">3 Aptitudes</a><a href="#jsAvatar">4 Avatar</a><a href="#jsProy">5 Proyectos</a>
+        </nav>
+      </div>
+
+      <section class="jsec" id="jsDatos" aria-labelledby="jsDatosH">
+        <div class="jsec__h"><b>1</b><h2 id="jsDatosH">Datos básicos</h2></div>
+        <div class="grid-2">
+          <div class="field"><label for="obName">Nombre completo</label><input id="obName" type="text" placeholder="Ej: Luisa Fernanda Torres" autocomplete="name" required maxlength="60" /><p class="field__err"></p></div>
+          <div class="field"><label for="obEmail">Correo institucional</label><input id="obEmail" type="email" placeholder="nombre.apellido@utadeo.edu.co" autocomplete="email" required /><p class="field__hint">Solo correos <strong>@utadeo.edu.co</strong></p><p class="field__err"></p></div>
+          <div class="field"><label for="obPass">Contraseña</label><div class="pass"><input id="obPass" type="password" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required /><button class="pass__toggle" type="button" data-toggle-pass="obPass">Mostrar</button></div><p class="field__err"></p></div>
+          <div class="field"><label for="obPass2">Confirmar contraseña</label><input id="obPass2" type="password" placeholder="Repite tu contraseña" autocomplete="new-password" required /><p class="field__err"></p></div>
+          <div class="field"><label for="obGender">Género</label><select id="obGender" required><option value="">Selecciona…</option><option value="F">Femenino</option><option value="M">Masculino</option><option value="X">No binario</option><option value="N">Prefiero no decirlo</option></select><p class="field__err"></p></div>
+          <div class="field"><label for="obCity">Ciudad de residencia</label><input id="obCity" type="text" placeholder="Ej: Bogotá" maxlength="40" /></div>
+          <div class="field"><span class="label" id="rolLbl">Rol</span><div class="seg seg--full" role="radiogroup" aria-labelledby="rolLbl"><label><input type="radio" name="rol" value="estudiante" checked /><span>Estudiante</span></label><label><input type="radio" name="rol" value="egresado" /><span>Egresado/a</span></label></div></div>
+          <div class="field" id="semesterField"><label for="obSemester">Semestre</label><select id="obSemester"></select></div>
+        </div>
+        <div class="field"><label for="obBio">Biografía corta</label><textarea id="obBio" rows="2" maxlength="220" placeholder="Cuéntale a la red qué te mueve como diseñador/a"></textarea></div>
+        <div class="field"><span class="label">Redes profesionales <span class="muted">(opcional)</span></span>
+          <div class="social-inputs">
+            <label class="social-input"><span class="sbadge sbadge--linkedin" aria-hidden="true">in</span><span class="sr">LinkedIn</span><input id="obLinkedin" type="url" placeholder="linkedin.com/in/…" /></label>
+            <label class="social-input"><span class="sbadge sbadge--behance" aria-hidden="true">Bē</span><span class="sr">Behance</span><input id="obBehance" type="url" placeholder="behance.net/…" /></label>
+            <label class="social-input"><span class="sbadge sbadge--instagram" aria-hidden="true">IG</span><span class="sr">Instagram</span><input id="obInstagram" type="url" placeholder="instagram.com/…" /></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="jsec" id="jsCampo" aria-labelledby="jsCampoH">
+        <div class="jsec__h"><b>2</b><h2 id="jsCampoH">Campo y áreas</h2><span>Elige el campo donde vive tu trabajo y hasta 3 áreas.</span></div>
+        <div class="niche-picker" id="nichePicker" role="radiogroup" aria-label="Campo principal"></div>
+        <p class="field__err" id="nicheErr"></p>
+        <div class="chips chips--pick" id="areaPicker" aria-label="Áreas"></div>
+        <p class="field__err" id="areaErr"></p>
+      </section>
+
+      <section class="jsec" id="jsApt" aria-labelledby="jsAptH">
+        <div class="jsec__h"><b>3</b><h2 id="jsAptH">Tus aptitudes únicas</h2><span>Lo que sabes hacer y te hace distinto. Escribe y pulsa Enter.</span></div>
+        <div class="tagbox" id="skillBox">
+          <div class="tagbox__list" id="skillList"></div>
+          <input id="skillInput" type="text" placeholder="Ej: Biomateriales, Torno, Figma…" aria-label="Agregar aptitud" maxlength="30" autocomplete="off" />
+        </div>
+        <p class="field__hint">Sugerencias:</p>
+        <div class="chips chips--sug" id="skillSug"></div>
+      </section>
+
+      <section class="jsec" id="jsAvatar" aria-labelledby="jsAvatarH">
+        <div class="jsec__h"><b>4</b><h2 id="jsAvatarH">Crea tu avatar</h2><span>Elige un personaje o sube tu foto. Así te verán en la red.</span></div>
+        <div class="avedit" id="joinAvatar"></div>
+        <div class="field"><label for="obAvStory">Cuéntanos sobre tu avatar</label><textarea id="obAvStory" rows="2" maxlength="200" placeholder="¿Por qué lo elegiste? ¿Qué dice de ti?"></textarea><p class="field__hint counter"><span>Aparecerá en tu perfil.</span><span id="avStoryCount">0 / 200</span></p></div>
+      </section>
+
+      <section class="jsec" id="jsProy" aria-labelledby="jsProyH">
+        <div class="jsec__h"><b>5</b><h2 id="jsProyH">Tus proyectos</h2><span>Suma proyectos que hayas hecho y menciona a las personas de la red que participaron.</span></div>
+        <div id="joinProjects" class="jprojects"></div>
+        <button class="btn btn--light" type="button" id="addJoinProject">+ Agregar un proyecto</button>
+      </section>
+
+      <footer class="join__foot">
+        <p class="form-error" id="joinErr" role="alert"></p>
+        <button class="btn btn--outline" type="button" id="joinSaveLater">Guardar y terminar después</button>
+        <button class="btn btn--primary btn--lg" type="submit">Crear mi perfil</button>
+      </footer>
+    </form>
+  </section>
+
+  <!-- =====================================================
+       3 · APLICACIÓN
+       ===================================================== -->
+  <header class="topbar" id="topbar" hidden>
+    <!-- UX: el logo es el botón de inicio (convención web universal) -->
+    <a class="home-logo" href="#red" aria-label="NexoTadeo · volver a la red"><img src="assets/logo-nexotadeo.png" alt="NexoTadeo" /></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#red" data-nav="red"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"/></svg>Red</a>
+      <a href="#proyectos" data-nav="proyectos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h6l2 2h10v10H3z"/></svg>Proyectos</a>
+      <a href="#equipos" data-nav="equipos"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/></svg>Equipos</a>
+      <a href="#board" data-nav="board"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h4M8 13h8"/></svg>Mi board</a>
+    </nav>
+    <div class="gsearch" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      <input id="searchInput" type="search" placeholder="Buscar personas, habilidades…" aria-label="Buscar en la red" autocomplete="off" aria-controls="searchResults" aria-expanded="false" />
+      <div class="gsearch__res" id="searchResults" role="listbox" hidden></div>
+    </div>
+    <div class="topbar__actions">
+      <a class="btn btn--outline" href="#equipos" id="teamBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/></svg><span>Crear un equipo</span></a>
+      <button class="btn btn--primary" type="button" id="createProjectBtn" aria-controls="cabito" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Crear un proyecto</span></button>
+      <button class="icon-btn" type="button" id="bellBtn" aria-label="Notificaciones" aria-haspopup="true" aria-expanded="false" aria-controls="notifPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 21h4"/></svg><b class="badge" id="bellCount" hidden>0</b></button>
+      <button class="me-btn" type="button" id="meBtn" aria-label="Tu cuenta" aria-haspopup="true" aria-expanded="false" aria-controls="meMenu"></button>
+      <button class="btn btn--primary" type="button" id="loginBtn" hidden>Iniciar sesión</button>
+    </div>
+    <div class="pop notif" id="notifPanel" role="dialog" aria-label="Notificaciones" hidden></div>
+    <div class="pop menu" id="meMenu" role="menu" hidden></div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- ---------- RED ---------- -->
+    <section class="view view--panal" id="viewPanal" aria-label="Red" hidden>
+      <div class="panal-head">
+        <h1 class="greeting" id="greetingHi">¡Hola!</h1>
+        <p class="greeting__sub">Explora el ecosistema de Diseño Industrial de la Utadeo</p>
+        <div class="panal-meta">
+          <span class="stat-pill" id="statPill" tabindex="0">—</span>
+          <nav class="legend" id="legend" aria-label="Campos de diseño"></nav>
+        </div>
+      </div>
+      <div class="viewport" id="viewport" aria-label="Mapa interactivo de la red. Arrastra para moverte, usa la rueda o los botones para acercar.">
+        <div class="world intro-anim" id="world">
+          <svg class="links" id="links" aria-hidden="true"></svg>
+          <div class="cells" id="cells"></div>
+        </div>
+        <div class="loader" id="loader">Cargando la red…</div>
+      </div>
+      <aside class="niche-card card" id="nicheCard" aria-hidden="true" aria-labelledby="nicheTitle"></aside>
+      <div class="toolbar card" role="toolbar" aria-label="Zoom del mapa">
+        <button class="tool" id="zoomIn" type="button" aria-label="Acercar" title="Acercar (+)"><svg viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></svg></button>
+        <span class="zoom-level" id="zoomLevel" aria-live="polite">100%</span>
+        <button class="tool" id="zoomOut" type="button" aria-label="Alejar" title="Alejar (−)"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button>
+        <button class="tool" id="zoomFit" type="button" aria-label="Ver toda la red" title="Ver toda la red (0)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      </div>
+      <button class="side-tab" type="button" id="teamsTab" aria-controls="teamsDrawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/></svg>
+        <span>Equipos públicos</span><b id="teamsTabCount">0</b>
+      </button>
+    </section>
+
+    <!-- ---------- PROYECTOS ---------- -->
+    <section class="view view--scroll" id="viewProyectos" aria-labelledby="pjTitle" hidden>
+      <div class="pj-wrap">
+        <header class="pj-head">
+          <div><h1 class="pj-title" id="pjTitle">Proyectos</h1><p class="pj-sub" id="pjSub">Mira lo que se está haciendo en la red y súmate a lo que te mueve.</p></div>
+          <div class="pj-actions">
+            <button class="btn btn--outline" id="newProjectBtn" type="button">Publicar proyecto</button>
+            <button class="btn btn--navy" id="joinProjectBtn" type="button" aria-pressed="false">Unirme a un proyecto <b class="pill-n" id="openCount">0</b></button>
+          </div>
+        </header>
+        <div class="pj-filters">
+          <div class="seg" id="statusFilter" role="group" aria-label="Estado">
+            <button class="is-active" data-estado="" type="button">Todos</button>
+            <button data-estado="ejecucion" type="button">En ejecución</button>
+            <button data-estado="finalizado" type="button">Finalizados</button>
+          </div>
+          <div class="sector-chips" id="sectorFilter" aria-label="Sectores de desempeño"></div>
+        </div>
+        <div class="open-banner" id="openBanner" hidden></div>
+        <div class="stack" id="projectStack"></div>
+        <div class="open-grid" id="openGrid" hidden></div>
+      </div>
+    </section>
+
+    <!-- ---------- EQUIPOS ---------- -->
+    <section class="view view--scroll" id="viewEquipos" aria-labelledby="eqTitle" hidden>
+      <div class="eq-wrap">
+        <header class="eq-head">
+          <div><h1 id="eqTitle">Crear un equipo</h1><p class="muted">Busca personas por lo que saben hacer, revisa su recorrido y júntalas en el board.</p></div>
+          <div class="seg" role="tablist" aria-label="Equipos" id="eqTabs">
+            <button type="button" role="tab" data-eqtab="crear" class="is-active" aria-selected="true">Crear un equipo</button>
+            <button type="button" role="tab" data-eqtab="publicos" aria-selected="false">Equipos públicos</button>
+            <button type="button" role="tab" data-eqtab="mios" aria-selected="false">Mis equipos</button>
+          </div>
+        </header>
+        <div class="eq-pane" data-eqpane="crear">
+          <div class="eq-grid">
+            <aside class="panel eq-filt" aria-label="Filtros de búsqueda" id="eqFilters"></aside>
+            <section class="eq-res" aria-label="Resultados" id="eqResults"></section>
+            <aside class="panel eq-board" aria-labelledby="ebTitle" id="eqBoard"></aside>
+          </div>
+        </div>
+        <div class="eq-pane" data-eqpane="publicos" hidden><div class="team-grid" id="publicTeams"></div></div>
+        <div class="eq-pane" data-eqpane="mios" hidden><div class="team-grid" id="myTeams"></div></div>
+      </div>
+    </section>
+
+    <!-- ---------- MI BOARD ---------- -->
+    <section class="view view--board" id="viewBoard" aria-labelledby="bdTitle" hidden>
+      <div class="bd-head">
+        <div><h1 id="bdTitle">Mi board</h1><p class="muted">Tu espacio para guardar lo que te inspira de la red. Solo tú lo ves.</p></div>
+        <div class="bd-meta"><input class="bd-name" id="boardName" aria-label="Nombre del board" maxlength="60" /><span class="muted" id="boardInfo"></span></div>
+      </div>
+      <div class="bd-frame">
+        <div class="bd-tools card" role="toolbar" aria-label="Agregar al board" aria-orientation="vertical" id="boardTools"></div>
+        <div class="bd-canvas" id="boardCanvas" tabindex="0" aria-label="Lienzo del board. Selecciona un elemento y usa las flechas para moverlo o Suprimir para borrarlo."><div class="bd-inner" id="boardInner"></div></div>
+        <div class="bd-tray card" id="boardTray" hidden></div>
+      </div>
+    </section>
+
+    <!-- ---------- PERFIL (marca personal) ---------- -->
+    <section class="view view--scroll" id="viewPerfil" aria-label="Perfil" hidden><div class="pf-wrap" id="profileBody"></div></section>
+  </main>
+
+  <!-- Navegación inferior en móvil (alcance del pulgar) -->
+  <nav class="bottom-nav" id="bottomNav" aria-label="Secciones" hidden>
+    <a href="#red" data-nav="red"><svg viewBox="0 0 24 24"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"/></svg>Red</a>
+    <a href="#proyectos" data-nav="proyectos"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v10H3z"/></svg>Proyectos</a>
+    <button type="button" class="bottom-nav__add" id="mobileCreate" aria-label="Crear un proyecto"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+    <a href="#equipos" data-nav="equipos"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.3 5 2.6 5 5.8"/></svg>Equipos</a>
+    <a href="#board" data-nav="board"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h4M8 13h8"/></svg>Board</a>
+  </nav>
+
+  <div class="pop addpop" id="addPop" role="menu" aria-label="Agregar a la red" hidden></div>
+
+  <!-- Pestaña lateral: equipos públicos -->
+  <div class="scrim" id="drawerScrim"></div>
+  <aside class="drawer" id="teamsDrawer" role="dialog" aria-modal="true" aria-labelledby="tdTitle" aria-hidden="true">
+    <div class="drawer__head"><h2 id="tdTitle">Equipos públicos</h2><button class="btn btn--icon btn--ghost" type="button" data-close-drawer aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="seg seg--full seg--3" role="tablist" id="tdTabs">
+      <button type="button" data-tdtab="todos" class="is-active">Todos</button>
+      <button type="button" data-tdtab="buscan">Buscan talento</button>
+      <button type="button" data-tdtab="mios">Mis equipos</button>
+    </div>
+    <div class="drawer__body" id="teamsDrawerBody"></div>
+  </aside>
+
+  <!-- ============ MODALES ============ -->
+  <div class="modal" id="confirmModal" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--sm">
+      <div class="modal__head"><h2 id="confirmTitle">¿Seguro?</h2><p class="muted" id="confirmText"></p></div>
+      <div class="modal__foot"><button class="btn btn--outline" type="button" data-close>Cancelar</button><button class="btn btn--danger" type="button" id="confirmOk">Eliminar</button></div>
+    </div>
+  </div>
+
+  <div class="modal" id="formModal" role="dialog" aria-modal="true" aria-labelledby="formTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <form class="modal__panel" id="formPanel" novalidate>
+      <button class="btn btn--icon btn--ghost modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <header class="modal__head"><p class="eyebrow" id="formEyebrow"></p><h2 id="formTitle"></h2></header>
+      <div class="modal__body" id="formBody"></div>
+      <footer class="modal__foot" id="formFoot"></footer>
+    </form>
+  </div>
+
+  <div class="modal" id="viewerModal" role="dialog" aria-modal="true" aria-label="Detalle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--lg">
+      <button class="btn btn--icon btn--light modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div id="viewerBody"></div>
+    </div>
+  </div>
+
+  <!-- Gestor de proyecto (se mantiene como estaba) -->
+  <div class="modal" id="pmModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--xl">
+      <button class="btn btn--icon btn--ghost modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <header class="modal__head pm-head">
+        <p class="eyebrow" id="pmEyebrow">Proyecto</p>
+        <h2 id="pmTitle">Nuevo proyecto</h2>
+        <div class="seg pm-tabs" role="tablist" aria-label="Secciones del proyecto">
+          <button class="is-active" type="button" data-pm-tab="info">Proyecto</button>
+          <button type="button" data-pm-tab="equipo">Equipo</button>
+          <button type="button" data-pm-tab="apoyo">Apoyo de la universidad</button>
+          <button type="button" data-pm-tab="brief">Brief</button>
+        </div>
+      </header>
+      <div class="pm-body" id="pmBody"></div>
+      <footer class="modal__foot modal__foot--between pm-foot">
+        <span class="pm-status" id="pmStatus"></span>
+        <div class="pm-actions">
+          <button class="btn btn--ghost" type="button" id="pmDraft">Guardar borrador</button>
+          <button class="btn btn--outline" type="button" id="pmPdf">Descargar PDF</button>
+          <button class="btn btn--navy" type="button" id="pmSend">Enviar a la Universidad</button>
+          <button class="btn btn--primary" type="button" id="pmPublish">Publicar</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal" id="pdModal" role="dialog" aria-modal="true" aria-label="Detalle del proyecto" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel modal__panel--lg">
+      <button class="btn btn--icon btn--light modal__x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="pd" id="pdBody"></div>
+    </div>
+  </div>
+
+  <!-- ============ ASISTENTE «CREAR UN PROYECTO» (como estaba) ============ -->
+  <section class="cabito card" id="cabito" aria-hidden="true" aria-label="Crear un proyecto con Cabito">
+    <header class="cabito__head">
+      <span class="cabito__avatar" data-dog></span>
+      <div><strong>Crear un proyecto</strong><small>Cabito te ayuda a armar equipo y brief</small></div>
+      <button class="btn btn--icon btn--ghost" id="cabitoReset" type="button" aria-label="Nueva conversación" title="Nueva conversación"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg></button>
+      <button class="btn btn--icon btn--ghost" id="cabitoClose" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </header>
+    <div class="cabito__log" id="cabitoLog" aria-live="polite"></div>
+    <form class="cabito__compose" id="cabitoForm">
+      <textarea id="cabitoInput" rows="3" placeholder="Primero elige un sector de desempeño" aria-label="Descripción del proyecto" disabled></textarea>
+      <div class="cabito__bar"><span class="wc" id="wordCount">0 / 300 palabras</span><button class="btn btn--primary btn--sm" type="submit" id="cabitoSend" disabled>Enviar</button></div>
+    </form>
+  </section>
+
+  <!-- ============ CABITO · AYUDA ============ -->
+  <button class="help-fab" id="helpFab" type="button" aria-label="Ayuda: pregúntale a Cabito" aria-expanded="false" aria-controls="help" hidden>
+    <span class="help-fab__lbl"><b>Ayuda</b> · Pregúntale a Cabito</span>
+    <span class="help-fab__dog" data-dog></span>
+  </button>
+  <section class="help card" id="help" role="dialog" aria-modal="false" aria-labelledby="helpTitle" aria-hidden="true">
+    <header class="help__head">
+      <span class="help__avatar" data-dog></span>
+      <div><strong id="helpTitle">Cabito · Ayuda</strong><small>Te explico la red y resuelvo tus dudas</small></div>
+      <button class="btn btn--icon help__x" type="button" id="helpClose" aria-label="Cerrar ayuda"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="help__tabs" role="tablist" aria-label="Ayuda">
+        <button type="button" role="tab" data-htab="conoce" aria-selected="false">Conoce la red</button>
+        <button type="button" role="tab" data-htab="pregunta" aria-selected="true" class="is-active">Pregúntale</button>
+        <button type="button" role="tab" data-htab="comentarios" aria-selected="false">Comentarios</button>
+      </div>
+    </header>
+    <div class="help__pane" data-hpane="conoce" hidden></div>
+    <div class="help__pane help__pane--chat" data-hpane="pregunta">
+      <div class="help__log" id="helpLog" aria-live="polite"></div>
+      <form class="help__compose" id="helpForm"><input id="helpInput" type="text" placeholder="Escribe tu pregunta…" aria-label="Tu pregunta" autocomplete="off" /><button class="send" type="submit" aria-label="Enviar pregunta"><svg viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg></button></form>
+    </div>
+    <div class="help__pane" data-hpane="comentarios" hidden></div>
+  </section>
+
+  <input type="file" id="fileInput" accept="image/*" hidden />
+  <div class="tip" id="tip" role="tooltip"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
